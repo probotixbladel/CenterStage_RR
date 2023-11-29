@@ -79,7 +79,7 @@ public class  roadRunnerDrive extends LinearOpMode {
 
 
 
-        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+      //  drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         waitForStart();
 
@@ -88,8 +88,8 @@ public class  roadRunnerDrive extends LinearOpMode {
 
         while (opModeIsActive() && !isStopRequested()) {
             //To see what encoder values its giving
-                telemetry.addData("Encoder value:",Hardware.liftMotor.getCurrentPosition());
-                telemetry.update();
+            //  telemetry.addData("Encoder value:",Hardware.liftMotor.getCurrentPosition());
+            //    telemetry.update();
 
             drive.update();
 
@@ -129,7 +129,7 @@ public class  roadRunnerDrive extends LinearOpMode {
                         Hardware.setGear(hardware.Gear.FOURTH);
                         turnspeed = 0.6;
                     }
-
+/**
                     Hardware.liftMotor.setPower(1);
                     //high junction
                     //was gamepad2

@@ -54,7 +54,7 @@ public class LiftPIDTuner extends LinearOpMode {
         Hardware.init();
         Hardware.reset();
 
-        Hardware.liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      //  Hardware.liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
 
@@ -68,7 +68,7 @@ public class LiftPIDTuner extends LinearOpMode {
         waitForStart();
         runtime.reset();
 
-        // run until the end of the match (driver presses STOP)
+     /**   // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
             Hardware.liftMotor.setVelocityPIDFCoefficients(liftPID.p,liftPID.i,liftPID.d,liftPID.f);
@@ -82,7 +82,7 @@ public class LiftPIDTuner extends LinearOpMode {
             /*else {
                 Hardware.getLiftMotor().setPower(0);
             }*/
-
+/**
             //high junction
             if (gamepad1.dpad_up) {
                 Hardware.liftMotor.setTargetPosition(-4180);
@@ -133,3 +133,4 @@ public class LiftPIDTuner extends LinearOpMode {
         }
     }
 }
+**/}}

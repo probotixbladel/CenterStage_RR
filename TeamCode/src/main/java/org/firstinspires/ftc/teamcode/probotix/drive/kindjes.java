@@ -90,7 +90,7 @@ public class  kindjes extends LinearOpMode {
 
         while (opModeIsActive() && !isStopRequested()) {
             //To see what encoder values its giving
-            telemetry.addData("Encoder value:",Hardware.liftMotor.getCurrentPosition());
+            //telemetry.addData("Encoder value:",Hardware.liftMotor.getCurrentPosition());
             telemetry.update();
 
             drive.update();
@@ -132,7 +132,7 @@ public class  kindjes extends LinearOpMode {
                         turnspeed = 0.6;
                     }
 */
-                    Hardware.liftMotor.setPower(0.7);
+                  /*  Hardware.liftMotor.setPower(0.7);
                     //high junction
                     //was gamepad2
                     if (gamepad2.dpad_up) {

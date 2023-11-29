@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 
 public class hardware {
-        public DcMotorEx wheelLeftFront, wheelRightFront, wheelLeftRear, wheelRightRear, liftMotor;
-        //public Servo grabServo, stickServo;
+        public DcMotorEx wheelLeftFront, wheelRightFront, wheelLeftRear, wheelRightRear, liftMotor, armMotor;
+        //public Servo grabServo;
 
 
         private HardwareMap hardwareMap;
@@ -26,8 +26,8 @@ public class hardware {
             this.wheelLeftRear = (DcMotorEx) hardwareMap.dcMotor.get("wheelLeftRear");
             this.wheelRightRear = (DcMotorEx) hardwareMap.dcMotor.get("wheelRightRear");
             this.liftMotor = (DcMotorEx) hardwareMap.dcMotor.get("liftMotor");
+            this.armMotor = (DcMotorEx) hardwareMap.dcMotor.get("armMotor");
             //this.grabServo = (Servo) hardwareMap.servo.get("grabServo");
-            //this.stickServo = (Servo) hardwareMap.servo.get("stickServo");
             reset();
         }
 
@@ -43,21 +43,13 @@ public class hardware {
             liftMotor.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
             liftMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
-            /**
-             * grab_servo
-             * 0.70 -> open
-             * 0.15 -> closed not correct servo position
-             */
-            //grabServo.setPosition(0.15);
-            //stickServo.setPosition(1);
-            //0.5 is not correct yet
+            armMotor.setPower(0);
+            armMotor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+            armMotor.setTargetPosition(0);
+            armMotor.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+            armMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
 
-
-            //deliverServo.setPosition(0.75);
-
-            // wheelLeftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-            // wheelLeftRear.setDirection(DcMotorSimple.Direction.REVERSE);
 
         }
 
@@ -102,14 +94,13 @@ public class hardware {
             return wheelRightRear;
         }
 
-        public DcMotorEx getLiftMotor() {
-        return liftMotor;
-    }
+        public DcMotorEx getLiftMotor() {return liftMotor;}
+
+        public DcMotorEx getArmMotor() {return armMotor;}
 
         //public Servo getGrabServo(){return grabServo;}
 
-        //public Servo getStickServo(){return stickServo;}
+
 
 
     }
-

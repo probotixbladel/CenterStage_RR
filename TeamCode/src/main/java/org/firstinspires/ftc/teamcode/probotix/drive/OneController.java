@@ -90,7 +90,7 @@ public class  OneController extends LinearOpMode {
 
         while (opModeIsActive() && !isStopRequested()) {
             //To see what encoder values its giving
-            telemetry.addData("Encoder value:",Hardware.liftMotor.getCurrentPosition());
+         //   telemetry.addData("Encoder value:",Hardware.liftMotor.getCurrentPosition());
             telemetry.update();
 
             drive.update();
@@ -132,7 +132,7 @@ public class  OneController extends LinearOpMode {
                         Hardware.setGear(hardware.Gear.FOURTH);
                         turnspeed = 0.6;
                     }
-
+/**
                     Hardware.liftMotor.setPower(1);
                     //high junction
                     //was gamepad2
