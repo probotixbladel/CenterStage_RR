@@ -129,37 +129,23 @@ public class  roadRunnerDrive extends LinearOpMode {
                         Hardware.setGear(hardware.Gear.FOURTH);
                         turnspeed = 0.6;
                     }
-/**
+
                     Hardware.liftMotor.setPower(1);
-                    //high junction
-                    //was gamepad2
+                    Hardware.armMotor.setPower(1);
+
                     if (gamepad2.dpad_up) {
-                        Hardware.liftMotor.setTargetPosition(-4180);//-4150
+                        Hardware.liftMotor.setTargetPosition(10);
                     }
-                    //medium junction
-                    else if (gamepad2.dpad_right) {
-                        Hardware.liftMotor.setTargetPosition(-3000);
-                    }
-                    //pick up
                     else if (gamepad2.dpad_down) {
-                        Hardware.liftMotor.setTargetPosition(-10);//-10
-                    }
-                    //low junction
-                    //was gamepad2
-                    else if (gamepad2.dpad_left) {
-                        Hardware.liftMotor.setTargetPosition(-1800);//-2000
+                        Hardware.liftMotor.setTargetPosition(-10);
                     }
 
-                    //pick up hover
-                    else if (gamepad2.a) {
-                        Hardware.liftMotor.setTargetPosition(-600);//-900
+                    else if (gamepad2.y){
+                        Hardware.armMotor.setTargetPosition(10);
                     }
-                    //ground junction
-                    else if (gamepad2.b) {
-                        Hardware.liftMotor.setTargetPosition(-150);//-300
-                        //Hardware.liftMotor.setPower(0.6);
+                    else if(gamepad2.a){
+                        Hardware.armMotor.setTargetPosition(-10);
                     }
-
 
                     int currentPosition = Hardware.liftMotor.getCurrentPosition();
                     float rightTrigger = gamepad2.right_trigger*10;
@@ -173,34 +159,11 @@ public class  roadRunnerDrive extends LinearOpMode {
                     }
 
 
-                    //wtf is this bullshit
-                    /*
-                    else if (gamepad2.y & gamepad2.dpad_up) {
-                        Hardware.liftMotor.setPower(0.2);
-                    }
 
-                    else if (gamepad2.y & gamepad2.dpad_down) {
-                        Hardware.liftMotor.setPower(-0.2);
-                    }*/
 
-                    /**
-                     * originele grijper
-                     * grab_servo
-                     * 0.70 -> open
-                     * 0.15 -> closed not correct servo position
-                     */
-                        // reserve grijper
-                    //was gamepad2
-                    /*if (gamepad2.right_bumper) {
-                        Hardware.grabServo.setPosition(0.15);
-                    }
-                    else if (gamepad2.left_bumper) {
-                        Hardware.grabServo.setPosition(0.70);
-                    }
-*/
 
                 case AUTOMATIC_CONTROL:
-//was gamepad2
+
                     if (gamepad1.x) {
                         drive.cancelFollowing();
                         currentMode = Mode.DRIVER_CONTROL;
