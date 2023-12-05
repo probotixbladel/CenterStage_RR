@@ -130,32 +130,41 @@ public class  roadRunnerDrive extends LinearOpMode {
                         turnspeed = 0.6;
                     }
 
-                    Hardware.liftMotor.setPower(1);
+                    Hardware.liftMotor.setPower(0.5);
                     Hardware.armMotor.setPower(1);
 
                     if (gamepad2.dpad_up) {
-                        Hardware.liftMotor.setTargetPosition(10);
+                        Hardware.liftMotor.setTargetPosition(600);
                     }
                     else if (gamepad2.dpad_down) {
-                        Hardware.liftMotor.setTargetPosition(-10);
+                        Hardware.liftMotor.setTargetPosition(-200);
                     }
 
                     else if (gamepad2.y){
-                        Hardware.armMotor.setTargetPosition(10);
+                        Hardware.armMotor.setTargetPosition(0);
                     }
                     else if(gamepad2.a){
-                        Hardware.armMotor.setTargetPosition(-10);
+                        Hardware.armMotor.setTargetPosition(1700);
                     }
 
-                    int currentPosition = Hardware.liftMotor.getCurrentPosition();
+
+                    //this is for setting the arm in the right position,
+                    //so that in the init the correct 0 pos is used
+                    int currentArmPosition = Hardware.armMotor.getCurrentPosition();
+                    float leftStickY = gamepad2.left_stick_y*100;
+                    if(gamepad2.right_stick_button){
+                        Hardware.armMotor.setTargetPosition(currentArmPosition + (int)leftStickY);
+                    }
+
+
+                    int currentLiftPosition = Hardware.liftMotor.getCurrentPosition();
                     float rightTrigger = gamepad2.right_trigger*10;
                     float leftTrigger = gamepad2.left_trigger*10;
 
-
-                    if(gamepad2.right_trigger > 0.1 && currentPosition > -4470) {
-                        Hardware.liftMotor.setTargetPosition(currentPosition - (int)rightTrigger*10);
-                    } else if(gamepad2.left_trigger > 0.1 && currentPosition < -30) {
-                        Hardware.liftMotor.setTargetPosition(currentPosition + (int)leftTrigger*10);
+                    if(gamepad2.right_trigger > 0.1 && currentLiftPosition > -200) {
+                        Hardware.liftMotor.setTargetPosition(currentLiftPosition - (int)rightTrigger*10);
+                    } else if(gamepad2.left_trigger > 0.1 && currentLiftPosition < 625) {
+                        Hardware.liftMotor.setTargetPosition(currentLiftPosition + (int)leftTrigger*10);
                     }
 
 
