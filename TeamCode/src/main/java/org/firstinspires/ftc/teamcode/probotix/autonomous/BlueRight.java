@@ -25,6 +25,11 @@ public class BlueRight extends LinearOpMode {
 
         TrajectorySequence deliverMiddle = drive.trajectorySequenceBuilder(startPose)
                 .lineToConstantHeading(new Vector2d(-30,0))
+                        .addDisplacementMarker(()->{
+                            Hardware.dropServo.setPosition(0.43);
+                            sleep(100);
+                            Hardware.dropServo.setPosition(0.7);
+                        })
                 .build();
 
         TrajectorySequence backToBeginning = drive.trajectorySequenceBuilder(deliverMiddle.end())
