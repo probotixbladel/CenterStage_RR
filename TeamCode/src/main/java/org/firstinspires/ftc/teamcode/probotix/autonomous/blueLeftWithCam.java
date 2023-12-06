@@ -41,17 +41,26 @@ public class blueLeftWithCam extends LinearOpMode {
         });
 
         int propXPos = 0;
-
         int trajNumber = 0;
         while (!isStarted() && !isStopRequested()) {
             telemetry.addData("X Location: ", pipeline.getX());
             telemetry.addData("Y Location", pipeline.getY());
-            telemetry.addData("trajectory:", trajNumber);
             telemetry.update();
 
             propXPos = pipeline.getX();
 
             sleep(50);
+            if (propXPos<420){
+                trajNumber = 1;
+            }
+            else if (propXPos>420){
+                if (propXPos<850){
+                    trajNumber =2;
+                }
+                else if(propXPos>850){
+                    trajNumber = 3;
+                }
+            }
         }
         if (propXPos<420){
             trajNumber = 1;
@@ -63,6 +72,7 @@ public class blueLeftWithCam extends LinearOpMode {
             else if(propXPos>850){
                 trajNumber = 3;
             }
+        telemetry.addData("traj:",trajNumber);
         }
 
 
@@ -76,42 +86,57 @@ public class blueLeftWithCam extends LinearOpMode {
         Pose2d startPose = new Pose2d(0, 0, Math.toRadians(0));
         drive.setPoseEstimate(startPose);
         TrajectorySequence deliverleft = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-30, -10))
-                .addDisplacementMarker(() -> {
-                    Hardware.dropServo.setPosition(0.43);
-                    sleep(100);
-                    Hardware.dropServo.setPosition(0.7);
-                })
+                .lineToConstantHeading(new Vector2d(-30, -13))
                 .build();
 
         TrajectorySequence deliverRight = drive.trajectorySequenceBuilder(startPose)
                 .lineToConstantHeading(new Vector2d(-30, 10))
-                .addDisplacementMarker(() -> {
-                    Hardware.dropServo.setPosition(0.43);
-                    sleep(100);
-                    Hardware.dropServo.setPosition(0.7);
-                })
                 .build();
 
         TrajectorySequence deliverMiddle = drive.trajectorySequenceBuilder(startPose)
                 .lineToConstantHeading(new Vector2d(-30, 0))
-                .addDisplacementMarker(() -> {
-                    Hardware.dropServo.setPosition(0.43);
-                    sleep(100);
-                    Hardware.dropServo.setPosition(0.7);
-                })
-
-
-
                 .build();
 
-        TrajectorySequence backup = drive.trajectorySequenceBuilder(deliverMiddle.end())
+
+
+        TrajectorySequence backupLeft = drive.trajectorySequenceBuilder(deliverleft.end())
+                .lineToConstantHeading(new Vector2d(-20, -13))
+                .build();
+
+        TrajectorySequence backupMiddle = drive.trajectorySequenceBuilder(deliverMiddle.end())
                 .lineToConstantHeading(new Vector2d(-25, 0))
-
                 .build();
 
-        TrajectorySequence deliverBackdrop = drive.trajectorySequenceBuilder(backup.end())
+        TrajectorySequence backupRight = drive.trajectorySequenceBuilder(deliverRight.end())
+                .lineToConstantHeading(new Vector2d(-25, 0))
+                .build();
+
+
+
+        TrajectorySequence deliverBackdropLeft = drive.trajectorySequenceBuilder(backupLeft.end())
+                .lineToLinearHeading(new Pose2d(-22, -37, Math.toRadians(90)))
+                .build();
+
+        TrajectorySequence deliverBackdropMiddle = drive.trajectorySequenceBuilder(backupMiddle.end())
                 .lineToLinearHeading(new Pose2d(-30, -35, Math.toRadians(90)))
+                .build();
+
+        TrajectorySequence deliverBackdropRight = drive.trajectorySequenceBuilder(backupRight.end())
+                .lineToLinearHeading(new Pose2d(-35, -35, Math.toRadians(90)))
+                .build();
+
+
+
+        TrajectorySequence parkLeft = drive.trajectorySequenceBuilder(deliverBackdropLeft.end())
+                .lineToConstantHeading(new Vector2d(-22, -35))
+                .build();
+
+        TrajectorySequence parkMiddle = drive.trajectorySequenceBuilder(deliverBackdropMiddle.end())
+                .lineToConstantHeading(new Vector2d(-25, 0))
+                .build();
+
+        TrajectorySequence parkRight = drive.trajectorySequenceBuilder(deliverBackdropRight.end())
+                .lineToConstantHeading(new Vector2d(-25, 0))
                 .build();
 
         waitForStart();
@@ -119,6 +144,13 @@ public class blueLeftWithCam extends LinearOpMode {
         if (!isStopRequested()) {
         if(trajNumber == 1){
             drive.followTrajectorySequence(deliverleft);
+            Hardware.dropServo.setPosition(0.43);
+            sleep(1000);
+            Hardware.dropServo.setPosition(0.70);
+            sleep(1000);
+            drive.followTrajectorySequence(backupLeft);
+            drive.followTrajectorySequence(deliverBackdropLeft);
+            drive.followTrajectorySequence(parkLeft);
         }
         else if(trajNumber == 2){
             drive.followTrajectorySequence(deliverMiddle);
@@ -126,9 +158,10 @@ public class blueLeftWithCam extends LinearOpMode {
         else{
             drive.followTrajectorySequence(deliverRight);
         }
-
-            drive.followTrajectorySequence(backup);
-            drive.followTrajectorySequence(deliverBackdrop);
+            /*Hardware.dropServo.setPosition(0.43);
+            sleep(1000);
+            Hardware.dropServo.setPosition(0.70);
+            */
         }
     }
 }
