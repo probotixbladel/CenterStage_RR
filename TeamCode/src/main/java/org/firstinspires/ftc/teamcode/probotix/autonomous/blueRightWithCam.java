@@ -17,8 +17,8 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-@Autonomous(name="blueLeftWithCam", group="probotix")
-public class blueLeftWithCam extends LinearOpMode {
+@Autonomous(name="blueRightWithCam", group="probotix")
+public class blueRightWithCam extends LinearOpMode {
     private hardware Hardware;
     OpenCvWebcam webcam;
     bluePropPipeline pipeline;
@@ -73,12 +73,12 @@ public class blueLeftWithCam extends LinearOpMode {
             else if(propXPos>850){
                 trajNumber = 3;
             }
-        telemetry.addData("traj:",trajNumber);
+            telemetry.addData("traj:",trajNumber);
         }
 
 
 
-            this.Hardware = new hardware(hardwareMap);
+        this.Hardware = new hardware(hardwareMap);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
         //forward -x, backward +x, left -y, right +y
@@ -91,7 +91,7 @@ public class blueLeftWithCam extends LinearOpMode {
                 .build();
 
         TrajectorySequence deliverMiddle = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-33, 0))
+                .lineToConstantHeading(new Vector2d(-32,0))
                 .build();
 
         TrajectorySequence deliverRight = drive.trajectorySequenceBuilder(startPose)
@@ -105,7 +105,7 @@ public class blueLeftWithCam extends LinearOpMode {
                 .build();
 
         TrajectorySequence backupMiddle = drive.trajectorySequenceBuilder(deliverMiddle.end())
-                .lineToConstantHeading(new Vector2d(-28,0))
+                .lineToConstantHeading(new Vector2d(-3,0))
                 .build();
 
         TrajectorySequence backupRight = drive.trajectorySequenceBuilder(deliverRight.end())
@@ -119,7 +119,7 @@ public class blueLeftWithCam extends LinearOpMode {
                 .build();
 
         TrajectorySequence deliverBackdropMiddle = drive.trajectorySequenceBuilder(backupMiddle.end())
-                .lineToLinearHeading(new Pose2d(-30,-37,Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-3,-95,Math.toRadians(90)))
                 .build();
 
         TrajectorySequence deliverBackdropRight = drive.trajectorySequenceBuilder(backupRight.end())
@@ -143,37 +143,38 @@ public class blueLeftWithCam extends LinearOpMode {
         waitForStart();
 
         if (!isStopRequested()) {
-        if(trajNumber == 1){
-            drive.followTrajectorySequence(deliverleft);
-            Hardware.dropServo.setPosition(0.43);
-            sleep(1000);
-            Hardware.dropServo.setPosition(0.70);
-            sleep(1000);
-            drive.followTrajectorySequence(backupLeft);
-            drive.followTrajectorySequence(deliverBackdropLeft);
-            drive.followTrajectorySequence(parkLeft);
-        }
-        else if(trajNumber == 2){
-            drive.followTrajectorySequence(deliverMiddle);
-            Hardware.dropServo.setPosition(0.43);
-            sleep(1000);
-            Hardware.dropServo.setPosition(0.70);
-            sleep(1000);
-            drive.followTrajectorySequence(backupMiddle);
-            drive.followTrajectorySequence(deliverBackdropMiddle);
-            drive.followTrajectorySequence(parkMiddle);
-        }
-        else{
-            drive.followTrajectorySequence(deliverRight);
-            drive.followTrajectorySequence(backupRight);
-            Hardware.dropServo.setPosition(0.43);
-            sleep(1000);
-            Hardware.dropServo.setPosition(0.70);
-            sleep(1000);
+            if(trajNumber == 1){
+                drive.followTrajectorySequence(deliverleft);
+                Hardware.dropServo.setPosition(0.43);
+                sleep(1000);
+                Hardware.dropServo.setPosition(0.70);
+                sleep(1000);
+                drive.followTrajectorySequence(backupLeft);
+                drive.followTrajectorySequence(deliverBackdropLeft);
+                drive.followTrajectorySequence(parkLeft);
+            }
+            else if(trajNumber == 2){
+                drive.followTrajectorySequence(deliverMiddle);
+                Hardware.dropServo.setPosition(0.43);
+                sleep(1000);
+                Hardware.dropServo.setPosition(0.70);
+                sleep(1000);
+                drive.followTrajectorySequence(backupMiddle);
+                drive.turn(Math.toRadians(90));
+                drive.followTrajectorySequence(deliverBackdropMiddle);
+                //drive.followTrajectorySequence(parkMiddle);
+            }
+            else{
+                drive.followTrajectorySequence(deliverRight);
+                drive.followTrajectorySequence(backupRight);
+                Hardware.dropServo.setPosition(0.43);
+                sleep(1000);
+                Hardware.dropServo.setPosition(0.70);
+                sleep(1000);
 
-            drive.followTrajectorySequence(deliverBackdropRight);
-            drive.followTrajectorySequence(parkRight);
-        }
+                drive.followTrajectorySequence(deliverBackdropRight);
+                drive.followTrajectorySequence(parkRight);
+            }
         }
     }
 }

@@ -18,10 +18,10 @@ public class redPropPipeline extends OpenCvPipeline
 {
     //Tuneable Hue (blue)
     //Cone: 110,130  -  Line: 100,110
-    public static double LowH = 330;
-    public static double HighH = 360;
+    public static double LowH = 0;
+    public static double HighH = 10;
     //Tunable saturation
-    public static double strictLowS = 50;
+    public static double strictLowS = 70;
     public static double strictHighS = 255;
 
     private Telemetry telemetry = null;

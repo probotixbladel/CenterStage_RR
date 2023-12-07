@@ -27,7 +27,7 @@ public class hardware {
             this.wheelRightRear = (DcMotorEx) hardwareMap.dcMotor.get("wheelRightRear");
             this.liftMotor = (DcMotorEx) hardwareMap.dcMotor.get("liftMotor");
             this.armMotor = (DcMotorEx) hardwareMap.dcMotor.get("armMotor");
-            //this.grabServo = (Servo) hardwareMap.servo.get("grabServo");
+            this.grabServo = (Servo) hardwareMap.servo.get("grabServo");
             this.dropServo = (Servo) hardwareMap.servo.get("dropServo");
             //this.clawServo = (Servo) hardwareMap.servo.get("clawServo");
             reset();
@@ -53,6 +53,7 @@ public class hardware {
 
 
             dropServo.setPosition(0.5);
+            grabServo.setPosition(0.5);
             // drive = 0.70
             //open = 0.43
             //closed = 0.50
@@ -106,7 +107,7 @@ public class hardware {
 
         public DcMotorEx getArmMotor() {return armMotor;}
 
-        //public Servo getGrabServo(){return grabServo;}
+        public Servo getGrabServo(){return grabServo;}
 
         public Servo getDropServo(){return dropServo;}
 

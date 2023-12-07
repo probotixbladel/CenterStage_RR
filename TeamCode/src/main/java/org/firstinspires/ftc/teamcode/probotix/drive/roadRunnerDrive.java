@@ -141,10 +141,10 @@ public class  roadRunnerDrive extends LinearOpMode {
                     }
 
                     else if (gamepad2.y){
-                        Hardware.armMotor.setTargetPosition(0);
+                        Hardware.armMotor.setTargetPosition(-1700);
                     }
                     else if(gamepad2.a){
-                        Hardware.armMotor.setTargetPosition(1700);
+                        Hardware.armMotor.setTargetPosition(0);
                     }
 
 
@@ -165,6 +165,22 @@ public class  roadRunnerDrive extends LinearOpMode {
                         Hardware.liftMotor.setTargetPosition(currentLiftPosition - (int)rightTrigger*10);
                     } else if(gamepad2.left_trigger > 0.1 && currentLiftPosition < 625) {
                         Hardware.liftMotor.setTargetPosition(currentLiftPosition + (int)leftTrigger*10);
+                    }
+
+
+                    if(gamepad2.right_bumper){
+                        Hardware.grabServo.setPosition(0.45);
+                    }
+                    else if(gamepad2.left_bumper){
+                        Hardware.grabServo.setPosition(0.7);
+                    }
+
+                    if(gamepad2.x){
+                        Hardware.dropServo.setPosition(0.43);
+
+                    }
+                    else if(gamepad2.b){
+                        Hardware.dropServo.setPosition(0.7);
                     }
 
 

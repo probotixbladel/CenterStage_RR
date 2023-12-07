@@ -14,7 +14,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StackPipeline extends OpenCvPipeline
+public class bluePropPipeline extends OpenCvPipeline
 {
     //Tuneable Hue (blue)
     //Cone: 110,130  -  Line: 100,110
@@ -38,7 +38,7 @@ public class StackPipeline extends OpenCvPipeline
     Scalar Yellow = new Scalar(255,255,0);
 
 
-    public StackPipeline() {
+    public bluePropPipeline() {
         this.telemetry = telemetry;
     }
 
