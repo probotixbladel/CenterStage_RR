@@ -45,7 +45,7 @@ public class blueLeftWithCam extends LinearOpMode {
         int trajNumber = 0;
         while (!isStarted() && !isStopRequested()) {
             telemetry.addData("X Location: ", pipeline.getX());
-            telemetry.addData("Y Location", pipeline.getY());
+            //telemetry.addData("Y Location", pipeline.getY());
             telemetry.update();
 
             propXPos = pipeline.getX();
@@ -86,25 +86,51 @@ public class blueLeftWithCam extends LinearOpMode {
         //Pose2d startPose = new Pose2d(62, 35, Math.toRadians(90));
         Pose2d startPose = new Pose2d(0, 0, Math.toRadians(0));
         drive.setPoseEstimate(startPose);
+
+
+        //******************************** LEFT ******************************//
+
         TrajectorySequence deliverleft = drive.trajectorySequenceBuilder(startPose)
                 .lineToConstantHeading(new Vector2d(-30, -13))
                 .build();
-
-        TrajectorySequence deliverMiddle = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-33, 0))
-                .build();
-
-        TrajectorySequence deliverRight = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-28,0))
-                .build();
-
-
 
         TrajectorySequence backupLeft = drive.trajectorySequenceBuilder(deliverleft.end())
                 .lineToConstantHeading(new Vector2d(-20, -13))
                 .build();
 
+        TrajectorySequence deliverBackdropLeft = drive.trajectorySequenceBuilder(backupLeft.end())
+                .lineToLinearHeading(new Pose2d(-22, -37, Math.toRadians(90)))
+                .build();
+
+        TrajectorySequence parkLeft = drive.trajectorySequenceBuilder(deliverBackdropLeft.end())
+                .lineToConstantHeading(new Vector2d(-5, -37))
+                .build();
+
+        //******************************** LEFT ******************************//
+
+        //******************************** MIDDLE ****************************//
+
+        TrajectorySequence deliverMiddle = drive.trajectorySequenceBuilder(startPose)
+                .lineToConstantHeading(new Vector2d(-33, 0))
+                .build();
+
         TrajectorySequence backupMiddle = drive.trajectorySequenceBuilder(deliverMiddle.end())
+                .lineToConstantHeading(new Vector2d(-28,0))
+                .build();
+
+        TrajectorySequence deliverBackdropMiddle = drive.trajectorySequenceBuilder(backupMiddle.end())
+                .lineToLinearHeading(new Pose2d(-30,-37,Math.toRadians(90)))
+                .build();
+
+        TrajectorySequence parkMiddle = drive.trajectorySequenceBuilder(deliverBackdropMiddle.end())
+                .lineToConstantHeading(new Vector2d(-50, -37))
+                .build();
+
+        //******************************** MIDDLE ****************************//
+
+        //**************************** RIGHT *************************************//
+
+        TrajectorySequence deliverRight = drive.trajectorySequenceBuilder(startPose)
                 .lineToConstantHeading(new Vector2d(-28,0))
                 .build();
 
@@ -112,33 +138,16 @@ public class blueLeftWithCam extends LinearOpMode {
                 .lineToLinearHeading(new Pose2d(-30,6, Math.toRadians(-90)))
                 .build();
 
-
-
-        TrajectorySequence deliverBackdropLeft = drive.trajectorySequenceBuilder(backupLeft.end())
-                .lineToLinearHeading(new Pose2d(-22, -37, Math.toRadians(90)))
-                .build();
-
-        TrajectorySequence deliverBackdropMiddle = drive.trajectorySequenceBuilder(backupMiddle.end())
-                .lineToLinearHeading(new Pose2d(-30,-37,Math.toRadians(90)))
-                .build();
-
         TrajectorySequence deliverBackdropRight = drive.trajectorySequenceBuilder(backupRight.end())
                 .lineToLinearHeading(new Pose2d(-35, -37, Math.toRadians(90)))
-                .build();
-
-
-
-        TrajectorySequence parkLeft = drive.trajectorySequenceBuilder(deliverBackdropLeft.end())
-                .lineToConstantHeading(new Vector2d(-5, -37))
-                .build();
-
-        TrajectorySequence parkMiddle = drive.trajectorySequenceBuilder(deliverBackdropMiddle.end())
-                .lineToConstantHeading(new Vector2d(-50, -37))
                 .build();
 
         TrajectorySequence parkRight = drive.trajectorySequenceBuilder(deliverBackdropRight.end())
                 .lineToConstantHeading(new Vector2d(-50, -37))
                 .build();
+
+        //**************************** RIGHT *************************************//
+
 
         waitForStart();
 
