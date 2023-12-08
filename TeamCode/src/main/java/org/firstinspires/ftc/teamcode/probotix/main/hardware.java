@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class hardware {
         public DcMotorEx wheelLeftFront, wheelRightFront, wheelLeftRear, wheelRightRear, liftMotor, armMotor;
-        public Servo grabServo, dropServo, clawServo;
+        public Servo grabServo, dropServo, flipServo;
 
 
         private HardwareMap hardwareMap;
@@ -29,7 +29,7 @@ public class hardware {
             this.armMotor = (DcMotorEx) hardwareMap.dcMotor.get("armMotor");
             this.grabServo = (Servo) hardwareMap.servo.get("grabServo");
             this.dropServo = (Servo) hardwareMap.servo.get("dropServo");
-            //this.clawServo = (Servo) hardwareMap.servo.get("clawServo");
+            this.flipServo = (Servo) hardwareMap.servo.get("flipServo");
             reset();
         }
 
@@ -54,6 +54,7 @@ public class hardware {
 
             dropServo.setPosition(0.5);
             grabServo.setPosition(0.5);
+            flipServo.setPosition(0.50); //0.67 uitgeklapt
             // drive = 0.70
             //open = 0.43
             //closed = 0.50
@@ -111,7 +112,7 @@ public class hardware {
 
         public Servo getDropServo(){return dropServo;}
 
-        //public Servo getClawServo(){return clawServo;}
+        public Servo getFlipServo(){return flipServo;}
 
 
 

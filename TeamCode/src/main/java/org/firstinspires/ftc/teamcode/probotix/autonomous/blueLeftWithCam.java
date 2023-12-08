@@ -156,9 +156,10 @@ public class blueLeftWithCam extends LinearOpMode {
             drive.followTrajectorySequence(deliverleft);
             Hardware.dropServo.setPosition(0.43);
             sleep(1000);
-            Hardware.dropServo.setPosition(0.70);
-            sleep(1000);
             drive.followTrajectorySequence(backupLeft);
+            Hardware.dropServo.setPosition(0.70);
+
+
             drive.followTrajectorySequence(deliverBackdropLeft);
             drive.followTrajectorySequence(parkLeft);
         }
@@ -166,9 +167,10 @@ public class blueLeftWithCam extends LinearOpMode {
             drive.followTrajectorySequence(deliverMiddle);
             Hardware.dropServo.setPosition(0.43);
             sleep(1000);
-            Hardware.dropServo.setPosition(0.70);
-            sleep(1000);
             drive.followTrajectorySequence(backupMiddle);
+            Hardware.dropServo.setPosition(0.70);
+
+
             drive.followTrajectorySequence(deliverBackdropMiddle);
             drive.followTrajectorySequence(parkMiddle);
         }
@@ -177,10 +179,11 @@ public class blueLeftWithCam extends LinearOpMode {
             drive.followTrajectorySequence(backupRight);
             Hardware.dropServo.setPosition(0.43);
             sleep(1000);
-            Hardware.dropServo.setPosition(0.70);
-            sleep(1000);
-
             drive.followTrajectorySequence(deliverBackdropRight);
+            Hardware.dropServo.setPosition(0.70);
+
+
+
             drive.followTrajectorySequence(parkRight);
         }
         }
