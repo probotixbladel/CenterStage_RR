@@ -137,16 +137,17 @@ public class  roadRunnerDrive extends LinearOpMode {
                         Hardware.liftMotor.setTargetPosition(800);
                     }
                     else if (gamepad2.dpad_down) {
-                        Hardware.liftMotor.setTargetPosition(-74);
+                        Hardware.liftMotor.setTargetPosition(250);
                     }
 
                     else if (gamepad2.y){
-                        Hardware.armMotor.setTargetPosition(1700);
-                    }
-                    else if(gamepad2.a){
                         Hardware.armMotor.setTargetPosition(0);
                     }
-                    telemetry.addData("arm ticks:", Hardware.liftMotor.getCurrentPosition());
+                    else if(gamepad2.a){
+                        Hardware.armMotor.setTargetPosition(1700);
+                    }
+                    telemetry.addData("lift ticks:", Hardware.liftMotor.getCurrentPosition());
+                    telemetry.addData("arm ticks:", Hardware.armMotor.getCurrentPosition());
                     telemetry.update();
                     //this is for setting the arm in the right position,
                     //so that in the init the correct 0 pos is used
@@ -161,7 +162,7 @@ public class  roadRunnerDrive extends LinearOpMode {
                     float rightTrigger = gamepad2.right_trigger*10;
                     float leftTrigger = gamepad2.left_trigger*10;
 
-                    if(gamepad2.right_trigger > 0.1 && currentLiftPosition > -70) {
+                    if(gamepad2.right_trigger > 0.1 && currentLiftPosition > 0) {
                         Hardware.liftMotor.setTargetPosition(currentLiftPosition - (int)rightTrigger*10);
                     } else if(gamepad2.left_trigger > 0.1 && currentLiftPosition < 800) {
                         Hardware.liftMotor.setTargetPosition(currentLiftPosition + (int)leftTrigger*10);
@@ -176,12 +177,12 @@ public class  roadRunnerDrive extends LinearOpMode {
                     }
 
                     if(gamepad2.x){
-                        Hardware.flipServo.setPosition(0); //0
+                        Hardware.flipServo.setPosition(0.75); //oppakken
 
 
                     }
                     else if(gamepad2.b){
-                        Hardware.flipServo.setPosition(0.63); //0.63
+                        Hardware.flipServo.setPosition(0.25); //afleveren
                     }
 
 

@@ -162,6 +162,8 @@ public class blueLeftWithCam extends LinearOpMode {
 
             drive.followTrajectorySequence(deliverBackdropLeft);
             drive.followTrajectorySequence(parkLeft);
+            Hardware.grabServo.setPosition(0.7);
+            sleep(500);
         }
         else if(trajNumber == 2){
             drive.followTrajectorySequence(deliverMiddle);
@@ -173,6 +175,8 @@ public class blueLeftWithCam extends LinearOpMode {
 
             drive.followTrajectorySequence(deliverBackdropMiddle);
             drive.followTrajectorySequence(parkMiddle);
+            Hardware.grabServo.setPosition(0.7);
+            sleep(500);
         }
         else{
             drive.followTrajectorySequence(deliverRight);
@@ -181,10 +185,9 @@ public class blueLeftWithCam extends LinearOpMode {
             sleep(1000);
             drive.followTrajectorySequence(deliverBackdropRight);
             Hardware.dropServo.setPosition(0.70);
-
-
-
             drive.followTrajectorySequence(parkRight);
+            Hardware.grabServo.setPosition(0.7);
+            sleep(500);
         }
         }
     }

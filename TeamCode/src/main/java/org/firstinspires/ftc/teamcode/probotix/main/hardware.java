@@ -54,7 +54,7 @@ public class hardware {
 
             dropServo.setPosition(0.5);
             grabServo.setPosition(0.5);
-            flipServo.setPosition(0.50); //0.67 uitgeklapt
+            flipServo.setPosition(0.33); //init stand
             // drive = 0.70
             //open = 0.43
             //closed = 0.50
