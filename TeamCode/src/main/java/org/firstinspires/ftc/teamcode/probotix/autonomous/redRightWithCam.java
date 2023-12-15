@@ -16,7 +16,7 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
-import org.firstinspires.ftc.teamcode.probotix.main.DriveConstants;
+import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 
 @Autonomous(name="redRightWithCam", group="probotix")
 public class redRightWithCam extends LinearOpMode {

@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import org.firstinspires.ftc.teamcode.probotix.main.SampleMecanumDriveCancelable;
 import org.firstinspires.ftc.teamcode.probotix.main.hardware;
-import org.firstinspires.ftc.teamcode.probotix.main.DriveConstants;
+import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 
 /**
  * This opmode demonstrates how one can augment driver control by following Road Runner arbitrary
