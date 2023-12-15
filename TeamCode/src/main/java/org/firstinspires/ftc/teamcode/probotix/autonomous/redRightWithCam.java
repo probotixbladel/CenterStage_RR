@@ -16,6 +16,7 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
+import org.firstinspires.ftc.teamcode.probotix.main.DriveConstants;
 
 @Autonomous(name="redRightWithCam", group="probotix")
 public class redRightWithCam extends LinearOpMode {
@@ -155,39 +156,39 @@ public class redRightWithCam extends LinearOpMode {
             if(trajNumber == 1){
                 drive.followTrajectorySequence(deliverLeft);
                 drive.followTrajectorySequence(backupLeft);
-                Hardware.dropServo.setPosition(0.43);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(1000);
 
-                Hardware.dropServo.setPosition(0.70);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
 
 
                 drive.followTrajectorySequence(deliverBackdropLeft);
                 drive.followTrajectorySequence(parkLeft);
-                 Hardware.grabServo.setPosition(0.7);
+                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(500);
             }
             else if(trajNumber == 2){
                 drive.followTrajectorySequence(deliverMiddle);
-                Hardware.dropServo.setPosition(0.43);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(1000);
                 drive.followTrajectorySequence(backupMiddle);
-                Hardware.dropServo.setPosition(0.70);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
 
                 drive.followTrajectorySequence(deliverBackdropMiddle);
                 drive.followTrajectorySequence(parkMiddle);
-                Hardware.grabServo.setPosition(0.7);
+                Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(500);
             }
             else{
                 drive.followTrajectorySequence(deliverRight);
 
-                Hardware.dropServo.setPosition(0.43);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(1000);
                 drive.followTrajectorySequence(backupRight);
-                Hardware.dropServo.setPosition(0.7);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
                 drive.followTrajectorySequence(deliverBackdropRight);
                 drive.followTrajectorySequence(parkRight);
-                Hardware.grabServo.setPosition(0.7);
+                Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(500);
             }
         }

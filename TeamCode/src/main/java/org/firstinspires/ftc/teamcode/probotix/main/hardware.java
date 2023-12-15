@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.probotix.main;
 
+import com.acmerobotics.roadrunner.drive.Drive;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -12,6 +13,10 @@ public class hardware {
 
         private HardwareMap hardwareMap;
         private Gear gear;
+        private Constants constants;
+
+
+
 
 
 
@@ -52,9 +57,9 @@ public class hardware {
             armMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
 
-            dropServo.setPosition(0.5);
-            grabServo.setPosition(0.5);
-            flipServo.setPosition(0.33); //init stand
+            dropServo.setPosition(DriveConstants.dropServoInit);
+            grabServo.setPosition(DriveConstants.grabServoInit);
+            flipServo.setPosition(DriveConstants.flipServoInit); //init stand
             // drive = 0.70
             //open = 0.43
             //closed = 0.50
@@ -71,9 +76,35 @@ public class hardware {
             return this.gear;
         }
 
+        public void setConstants(Constants constants) {
+        this.constants = constants;
+    }
+
+        public Constants getConstants() {
+        return this.constants;
+    }
+
+
+
+        public enum Constants {
+            liftUp(800),liftDown(250),
+            armPickUp(1700),armDeliver(0),
+            dropServoInit(0.5),dropServoOpen(0.43),dropServoClose(0.70),
+            flipServoInit(0.33),flipServoPickUp(0.75),flipServoDeliver(0.25),
+            grabServoInit(0.5),grabServoOpen(0.43),grabServoClose(0.70);
+
+
+            private double Positions;
+
+            Constants(double positions){this.Positions = positions;}
+
+            public double getPositions() {return Positions;}
+        }
+
         public enum  Gear {
             FIRST(0.25), SECOND(0.5), THIRD(0.75), FOURTH(0.90);
             //FOURTH was 1.0
+
 
             private double MaxSpeed;
 

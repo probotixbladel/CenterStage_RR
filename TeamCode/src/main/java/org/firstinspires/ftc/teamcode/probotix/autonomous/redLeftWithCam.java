@@ -16,6 +16,7 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
+import org.firstinspires.ftc.teamcode.probotix.main.DriveConstants;
 
 @Autonomous(name="redLeftWithCam", group="probotix")
 public class redLeftWithCam extends LinearOpMode {
@@ -170,9 +171,9 @@ public class redLeftWithCam extends LinearOpMode {
             if(trajNumber == 1){
                 drive.followTrajectorySequence(deliverLeft);
                 //drive.followTrajectorySequence(backupLeft);
-                Hardware.dropServo.setPosition(0.43);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(1000);
-                Hardware.dropServo.setPosition(0.70);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
                 sleep(1000);
                 //drive.followTrajectorySequence(goBackLeft);
 

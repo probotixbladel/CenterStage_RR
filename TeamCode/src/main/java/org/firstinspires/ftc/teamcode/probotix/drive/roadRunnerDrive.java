@@ -10,8 +10,10 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
+
 import org.firstinspires.ftc.teamcode.probotix.main.SampleMecanumDriveCancelable;
 import org.firstinspires.ftc.teamcode.probotix.main.hardware;
+import org.firstinspires.ftc.teamcode.probotix.main.DriveConstants;
 
 /**
  * This opmode demonstrates how one can augment driver control by following Road Runner arbitrary
@@ -134,17 +136,17 @@ public class  roadRunnerDrive extends LinearOpMode {
                     Hardware.armMotor.setPower(1);
 
                     if (gamepad2.dpad_up) {
-                        Hardware.liftMotor.setTargetPosition(800);
+                        Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                     }
                     else if (gamepad2.dpad_down) {
-                        Hardware.liftMotor.setTargetPosition(250);
+                        Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
                     }
 
                     else if (gamepad2.y){
-                        Hardware.armMotor.setTargetPosition(0);
+                        Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
                     }
                     else if(gamepad2.a){
-                        Hardware.armMotor.setTargetPosition(1700);
+                        Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
                     }
                     telemetry.addData("lift ticks:", Hardware.liftMotor.getCurrentPosition());
                     telemetry.addData("arm ticks:", Hardware.armMotor.getCurrentPosition());
@@ -164,25 +166,25 @@ public class  roadRunnerDrive extends LinearOpMode {
 
                     if(gamepad2.right_trigger > 0.1 && currentLiftPosition > 0) {
                         Hardware.liftMotor.setTargetPosition(currentLiftPosition - (int)rightTrigger*10);
-                    } else if(gamepad2.left_trigger > 0.1 && currentLiftPosition < 800) {
+                    } else if(gamepad2.left_trigger > 0.1 && currentLiftPosition < DriveConstants.liftUp) {
                         Hardware.liftMotor.setTargetPosition(currentLiftPosition + (int)leftTrigger*10);
                     }
 
 
                     if(gamepad2.right_bumper){
-                        Hardware.grabServo.setPosition(0.45);
+                        Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
                     }
                     else if(gamepad2.left_bumper){
-                        Hardware.grabServo.setPosition(0.7);
+                        Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                     }
 
                     if(gamepad2.x){
-                        Hardware.flipServo.setPosition(0.75); //oppakken
+                        Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp); //oppakken
 
 
                     }
                     else if(gamepad2.b){
-                        Hardware.flipServo.setPosition(0.25); //afleveren
+                        Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver); //afleveren
                     }
 
 
