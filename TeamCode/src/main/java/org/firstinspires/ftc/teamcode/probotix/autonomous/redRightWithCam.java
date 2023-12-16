@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.probotix.autonomous;
 
+import com.acmerobotics.roadrunner.drive.Drive;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -158,14 +159,20 @@ public class redRightWithCam extends LinearOpMode {
                 drive.followTrajectorySequence(backupLeft);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(1000);
-
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
-
-
                 drive.followTrajectorySequence(deliverBackdropLeft);
-                drive.followTrajectorySequence(parkLeft);
-                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+                Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
+                Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(500);
+                Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                sleep(100);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+                Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+                sleep(500);
+                drive.followTrajectorySequence(parkLeft);
+
             }
             else if(trajNumber == 2){
                 drive.followTrajectorySequence(deliverMiddle);
@@ -173,23 +180,38 @@ public class redRightWithCam extends LinearOpMode {
                 sleep(1000);
                 drive.followTrajectorySequence(backupMiddle);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
-
                 drive.followTrajectorySequence(deliverBackdropMiddle);
-                drive.followTrajectorySequence(parkMiddle);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+                Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(500);
+                Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                sleep(100);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+                Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+                sleep(500);
+                drive.followTrajectorySequence(parkMiddle);
+
             }
             else{
                 drive.followTrajectorySequence(deliverRight);
-
                 Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(1000);
                 drive.followTrajectorySequence(backupRight);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
                 drive.followTrajectorySequence(deliverBackdropRight);
-                drive.followTrajectorySequence(parkRight);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+                Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(500);
+                Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                sleep(100);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+                Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+                sleep(500);
+                drive.followTrajectorySequence(parkRight);
             }
         }
     }

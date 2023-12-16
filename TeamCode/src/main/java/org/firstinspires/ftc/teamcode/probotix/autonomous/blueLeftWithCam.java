@@ -160,12 +160,18 @@ public class blueLeftWithCam extends LinearOpMode {
             sleep(1000);
             drive.followTrajectorySequence(backupLeft);
             Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
-
-
             drive.followTrajectorySequence(deliverBackdropLeft);
-            drive.followTrajectorySequence(parkLeft);
+            Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+            Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+            Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
             Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
             sleep(500);
+            Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+            sleep(100);
+            Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+            Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+            sleep(500);
+            drive.followTrajectorySequence(parkLeft);
         }
         else if(trajNumber == 2){
             drive.followTrajectorySequence(deliverMiddle);
@@ -173,12 +179,20 @@ public class blueLeftWithCam extends LinearOpMode {
             sleep(1000);
             drive.followTrajectorySequence(backupMiddle);
             Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
-
-
+            sleep(500);
             drive.followTrajectorySequence(deliverBackdropMiddle);
-            drive.followTrajectorySequence(parkMiddle);
+            Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+            Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+            Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
             Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
             sleep(500);
+            Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+            sleep(100);
+            Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+            Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+            sleep(500);
+            drive.followTrajectorySequence(parkMiddle);
+
         }
         else{
             drive.followTrajectorySequence(deliverRight);
@@ -187,9 +201,18 @@ public class blueLeftWithCam extends LinearOpMode {
             sleep(1000);
             drive.followTrajectorySequence(deliverBackdropRight);
             Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
-            drive.followTrajectorySequence(parkRight);
+            Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+            Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+            Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
             Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
             sleep(500);
+            Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+            sleep(100);
+            Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+            Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+            sleep(500);
+            drive.followTrajectorySequence(parkRight);
+
         }
         }
     }

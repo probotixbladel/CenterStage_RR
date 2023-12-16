@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.probotix.autonomous;
 
+import com.acmerobotics.roadrunner.drive.Drive;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -171,41 +172,91 @@ public class redLeftWithCam extends LinearOpMode {
             if(trajNumber == 1){
                 drive.followTrajectorySequence(deliverLeft);
                 //drive.followTrajectorySequence(backupLeft);
-                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
-                sleep(1000);
-                Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
-                sleep(1000);
+                //Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
+                //sleep(500);
+                //Hardware.armMotor.setPower(1);
+                //Hardware.liftMotor.setPower(1);
+                //Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                //Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                //sleep(500);
+                //Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp-200);
+                //sleep(500);
+                //Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
+                //sleep(1000);
                 //drive.followTrajectorySequence(goBackLeft);
 
                 //drive.followTrajectorySequence(deliverBackdropLeft);
                 //drive.followTrajectorySequence(correctLeft);
+               //Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+               //sleep(100);
+               //Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                //Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
+                //Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
+                //sleep(500);
+                //Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                //sleep(100);
+                //Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+                //Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+                //sleep(500);
                 //drive.followTrajectorySequence(parkLeft);
             }
             else if(trajNumber == 2){
                 drive.followTrajectorySequence(deliverMiddle);
-                Hardware.dropServo.setPosition(0.43);
-                sleep(1000);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
+                sleep(500);
+                Hardware.armMotor.setPower(1);
+                Hardware.liftMotor.setPower(1);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                sleep(500);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp-200);
+                sleep(500);
                 drive.followTrajectorySequence(backupMiddle);
                 Hardware.dropServo.setPosition(0.70);
                 //drive.turn(Math.toRadians(90));
                 //drive.followTrajectorySequence(deliverBackdropMiddle);
                 //drive.followTrajectorySequence(correctMiddle);
+                //Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+                //sleep(100);
+                //Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                //Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
+                //Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
+                //sleep(500);
+                //Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                //sleep(100);
+                //Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+                //Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+                //sleep(500);
                 //drive.followTrajectorySequence(parkMiddle);
             }
             else{
                 drive.followTrajectorySequence(deliverRight);
-                Hardware.armMotor.setTargetPosition(1500);
                 drive.followTrajectorySequence(backupRight);
-                Hardware.dropServo.setPosition(0.43);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
+                sleep(500);
                 Hardware.armMotor.setPower(1);
+                Hardware.liftMotor.setPower(1);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                sleep(500);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp-200);
+                sleep(500);
                 drive.followTrajectorySequence(backRight);
                 drive.followTrajectorySequence(goBackRight);
-                Hardware.dropServo.setPosition(0.70);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
                 drive.followTrajectorySequence(deliverBackdropRight);
-                Hardware.armMotor.setTargetPosition(0);
+                //Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+                //sleep(100);
+                //Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                //Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
+                //Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
+                //sleep(500);
+                //Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown);
+                //sleep(100);
+                //Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+                //Hardware.flipServo.setPosition(DriveConstants.flipServoPickUp);
+                //sleep(500);
                 drive.followTrajectorySequence(parkRight);
-                Hardware.grabServo.setPosition(0.7);
-                sleep(500);
             }
         }
     }
