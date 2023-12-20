@@ -51,15 +51,15 @@ public class DriveConstants {
     public static int liftDown = 250;
     public static int armPickUp = 1700;
     public static int  armDeliver = 0;
-    public static double dropServoInit =0.5;
-    public static double dropServoOpen =0.43;
-    public static double dropServoClose = 0.7;
+    public static double dropServoInit =0.61;
+    public static double dropServoOpen =0.54;
+    public static double dropServoClose = 0.75;
     public static double flipServoInit =0.33;
     public static double flipServoPickUp =0.75;
     public static double flipServoDeliver=0.25;
     public static double grabServoInit = 0.5;
-    public static double grabServoOpen = 0.43;
-    public static double grabServoClose = 0.7;
+    public static double grabServoOpen = 0.7;
+    public static double grabServoClose = 0.43;
 
     /*
      * These are the feedforward parameters used to model the drive motor behavior. If you are using
