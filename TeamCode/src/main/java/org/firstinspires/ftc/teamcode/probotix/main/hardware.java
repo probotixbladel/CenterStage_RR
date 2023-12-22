@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.drive.DriveConstants;
+import org.firstinspires.ftc.teamcode.util.Encoder;
 
 
 public class hardware {
@@ -85,7 +86,7 @@ public class hardware {
         return this.constants;
     }
 
-
+            //niet gebruiken werkt nie
 
         public enum Constants {
             liftUp(800),liftDown(250),
