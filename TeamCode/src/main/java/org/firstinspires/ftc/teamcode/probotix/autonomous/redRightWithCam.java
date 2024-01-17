@@ -93,19 +93,19 @@ public class redRightWithCam extends LinearOpMode {
         //******************************** RIGHT ******************************//
 
         TrajectorySequence deliverRight = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-30, 13))
+                .lineToConstantHeading(new Vector2d(-30, 14))
                 .build();
 
         TrajectorySequence backupRight = drive.trajectorySequenceBuilder(deliverRight.end())
-                .lineToConstantHeading(new Vector2d(-20, 13))
+                .lineToConstantHeading(new Vector2d(-20, 14))
                 .build();
 
         TrajectorySequence deliverBackdropRight = drive.trajectorySequenceBuilder(backupRight.end())
-                .lineToLinearHeading(new Pose2d(-22, 42, Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-27, 43, Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence parkRight = drive.trajectorySequenceBuilder(deliverBackdropRight.end())
-                .lineToConstantHeading(new Vector2d(-5, 37))
+                .lineToConstantHeading(new Vector2d(-5, 40))
                 .build();
 
         //******************************** RIGHT ******************************//
@@ -125,7 +125,7 @@ public class redRightWithCam extends LinearOpMode {
                 .build();
 
         TrajectorySequence parkMiddle = drive.trajectorySequenceBuilder(deliverBackdropMiddle.end())
-                .lineToLinearHeading(new Pose2d(-50, 37,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-55, 37,Math.toRadians(-90)))
                 .build();
 
         //******************************** MIDDLE ****************************//
@@ -141,18 +141,18 @@ public class redRightWithCam extends LinearOpMode {
                 .build();
 
         TrajectorySequence deliverBackdropLeft = drive.trajectorySequenceBuilder(backupLeft.end())
-                .lineToLinearHeading(new Pose2d(-35, 42, Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-32, 40, Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence parkLeft = drive.trajectorySequenceBuilder(deliverBackdropLeft.end())
-                .lineToConstantHeading(new Vector2d(-50, 37))
+                .lineToConstantHeading(new Vector2d(-55, 37))
                 .build();
 
         //**************************** LEFT *************************************//
 
 
         waitForStart();
-
+        webcam.stopStreaming();
         if (!isStopRequested()) {
             if(trajNumber == 1){
                 Hardware.armMotor.setPower(1);
@@ -164,15 +164,15 @@ public class redRightWithCam extends LinearOpMode {
                 sleep(1000);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
                 drive.followTrajectorySequence(deliverBackdropLeft);
-                Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armDelAuto);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
                 sleep(1000);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(1000);
-                Hardware.liftMotor.setTargetPosition(10);
-                sleep(100);
                 Hardware.armMotor.setTargetPosition(0);
+                sleep(100);
+                Hardware.liftMotor.setTargetPosition(10);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoInit);
                 sleep(500);
                 drive.followTrajectorySequence(parkLeft);
@@ -188,15 +188,15 @@ public class redRightWithCam extends LinearOpMode {
                 drive.followTrajectorySequence(backupMiddle);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
                 drive.followTrajectorySequence(deliverBackdropMiddle);
-                Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armDelAuto);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
                 sleep(1000);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(1000);
-                Hardware.liftMotor.setTargetPosition(10);
-                sleep(100);
                 Hardware.armMotor.setTargetPosition(0);
+                sleep(100);
+                Hardware.liftMotor.setTargetPosition(10);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoInit);
                 sleep(500);
                 drive.followTrajectorySequence(parkMiddle);
@@ -212,15 +212,15 @@ public class redRightWithCam extends LinearOpMode {
                 drive.followTrajectorySequence(backupRight);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
                 drive.followTrajectorySequence(deliverBackdropRight);
-                Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armDelAuto);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
                 sleep(1000);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(1000);
-                Hardware.liftMotor.setTargetPosition(10);
-                sleep(100);
                 Hardware.armMotor.setTargetPosition(0);
+                sleep(100);
+                Hardware.liftMotor.setTargetPosition(10);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoInit);
                 sleep(500);
                 drive.followTrajectorySequence(parkRight);

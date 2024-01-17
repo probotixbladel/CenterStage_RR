@@ -99,8 +99,8 @@ public class  roadRunnerDrive extends LinearOpMode {
                 case DRIVER_CONTROL:
                     drive.setWeightedDrivePower(
                             new Pose2d(//removed - from gamepad1.left_stick_y
-                                    gamepad1.left_stick_y * Hardware.getGear().getMaxSpeed(),
-                                    gamepad1.left_stick_x * Hardware.getGear().getMaxSpeed(),
+                                    -gamepad1.left_stick_y * Hardware.getGear().getMaxSpeed(),
+                                    -gamepad1.left_stick_x * Hardware.getGear().getMaxSpeed(),
                                     -gamepad1.right_stick_x * Hardware.getGear().getMaxSpeed() * turnspeed
                             )
                     );
