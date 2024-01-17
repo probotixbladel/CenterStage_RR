@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.probotix.autonomous;
 
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -18,8 +17,8 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-@Autonomous(name="redLeftWithCam", group="probotix")
-public class redLeftWithCam extends LinearOpMode {
+@Autonomous(name="redLeft", group="probotix")
+public class redLeft extends LinearOpMode {
     private hardware Hardware;
     OpenCvWebcam webcam;
     redPropPipeline pipeline;
@@ -176,10 +175,11 @@ public class redLeftWithCam extends LinearOpMode {
         webcam.stopStreaming();
         if (!isStopRequested()) {
             if(trajNumber == 1){
+                Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
+                sleep(10);
                 drive.followTrajectorySequence(deliverLeft);
                 Hardware.armMotor.setPower(1);
                 Hardware.liftMotor.setPower(1);
-                Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(100);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown+100);
@@ -193,19 +193,20 @@ public class redLeftWithCam extends LinearOpMode {
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
-                sleep(1000);
+                sleep(500);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
-                sleep(1000);
+                sleep(700);
                 Hardware.armMotor.setTargetPosition(0);
                 sleep(100);
                 Hardware.liftMotor.setTargetPosition(10);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoInit);
-                sleep(500);
+                sleep(200);
                 drive.followTrajectorySequence(parkLeft);
             }
             else if(trajNumber == 2){
-                drive.followTrajectorySequence(deliverMiddle);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
+                sleep(10);
+                drive.followTrajectorySequence(deliverMiddle);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(500);
                 Hardware.armMotor.setPower(1);
@@ -221,23 +222,23 @@ public class redLeftWithCam extends LinearOpMode {
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
-                sleep(1000);
+                sleep(500);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
-                sleep(1000);
+                sleep(700);
                 Hardware.armMotor.setTargetPosition(0);
                 sleep(100);
                 Hardware.liftMotor.setTargetPosition(10);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoInit);
-                sleep(500);
+                sleep(200);
                 drive.followTrajectorySequence(parkMiddle);
 
             }
             else{
+                Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
+                sleep(10);
                 drive.followTrajectorySequence(deliverRight);
                 Hardware.armMotor.setPower(1);
                 Hardware.liftMotor.setPower(1);
-                Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
-                sleep(100);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown+100);
                 sleep(500);
                 Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp-100);
@@ -245,7 +246,7 @@ public class redLeftWithCam extends LinearOpMode {
                 drive.followTrajectorySequence(backupRight);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 drive.followTrajectorySequence(goALittleBack);
-                sleep(1000);
+                sleep(500);
                 drive.followTrajectorySequence(backRight);
                 drive.followTrajectorySequence(goBackRight);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
@@ -254,14 +255,14 @@ public class redLeftWithCam extends LinearOpMode {
                 Hardware.armMotor.setTargetPosition(DriveConstants.armDelAuto);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
-                sleep(1000);
+                sleep(500);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
-                sleep(1000);
+                sleep(700);
                 Hardware.armMotor.setTargetPosition(0);
                 sleep(100);
                 Hardware.liftMotor.setTargetPosition(10);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoInit);
-                sleep(500);
+                sleep(200);
                 drive.followTrajectorySequence(parkRight);
             }
         }
