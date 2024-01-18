@@ -153,7 +153,7 @@ public class redRightWithStack extends LinearOpMode {
                 .build();
 
         TrajectorySequence slowlyMiddle = drive.trajectorySequenceBuilder(driveToStackMiddle.end())
-                .lineToLinearHeading(new Pose2d(-54,-63.7,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-54,-66,Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence slowlyBackMiddle = drive.trajectorySequenceBuilder(slowlyMiddle.end())
@@ -313,7 +313,8 @@ public class redRightWithStack extends LinearOpMode {
                 Hardware.armMotor.setTargetPosition(DriveConstants.armDelAuto);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
-                sleep(500);
+                sleep(1000
+                );
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(700);
                 Hardware.armMotor.setTargetPosition(0);
