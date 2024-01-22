@@ -47,10 +47,10 @@ public class DriveConstants {
     public static double GEAR_RATIO = 1; // output (wheel) speed / input (motor) speed
     public static double TRACK_WIDTH = 12.2; // in
 
-    public static int liftUp = 800;
-    public static int liftDown = 250;
-    public static int armPickUp = 1700;
-    public static int  armDeliver = 0;
+    public static int   liftUp = 800;
+    public static int   liftDown = 250;
+    public static int   armPickUp = 1700;
+    public static int   armDeliver = 0;
     public static int armDelAuto = -170;
     public static double dropServoInit =0.61;
     public static double dropServoOpen =0.54;

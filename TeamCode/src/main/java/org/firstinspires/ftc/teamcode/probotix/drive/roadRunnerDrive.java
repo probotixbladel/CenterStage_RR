@@ -166,7 +166,7 @@ public class  roadRunnerDrive extends LinearOpMode {
 
                     if(gamepad2.right_trigger > 0.1 && currentLiftPosition > 0) {
                         Hardware.liftMotor.setTargetPosition(currentLiftPosition - (int)rightTrigger*10);
-                    } else if(gamepad2.left_trigger > 0.1 && currentLiftPosition < DriveConstants.liftUp) {
+                    } else if(gamepad2.left_trigger > 0.1 && currentLiftPosition < DriveConstants.liftUp+100) {
                         Hardware.liftMotor.setTargetPosition(currentLiftPosition + (int)leftTrigger*10);
                     }
 
