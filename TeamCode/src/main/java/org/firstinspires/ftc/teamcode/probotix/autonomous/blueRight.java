@@ -138,7 +138,7 @@ TrajectorySequence goAlittleBack = drive.trajectorySequenceBuilder(backupLeft.en
                 .build();
 
         TrajectorySequence correctMiddle = drive.trajectorySequenceBuilder(deliverBackdropMiddle.end())
-                .lineToLinearHeading(new Pose2d(-27,-89,Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-30,-89,Math.toRadians(90)))
                 .build();
 
         TrajectorySequence parkMiddle = drive.trajectorySequenceBuilder(correctMiddle.end())
@@ -167,10 +167,10 @@ TrajectorySequence goAlittleBack = drive.trajectorySequenceBuilder(backupLeft.en
                 .build();
 
         TrajectorySequence deliverBackdropRight = drive.trajectorySequenceBuilder(goToBackdrop.end())
-                .lineToConstantHeading(new Vector2d(-37, -93))
+                .lineToConstantHeading(new Vector2d(-38, -85))
                 .build();
         TrajectorySequence parkRight = drive.trajectorySequenceBuilder(deliverBackdropRight.end())
-                .lineToConstantHeading(new Vector2d(-55,-93))
+                .lineToConstantHeading(new Vector2d(-57,-85))
                         .build();
 
 
@@ -182,10 +182,11 @@ TrajectorySequence goAlittleBack = drive.trajectorySequenceBuilder(backupLeft.en
         webcam.stopStreaming();
         if (!isStopRequested()) {
             if(trajNumber == 1){
+                Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
+                sleep(10);
                 drive.followTrajectorySequence(deliverleft);
                 Hardware.armMotor.setPower(1);
                 Hardware.liftMotor.setPower(1);
-                Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
                 sleep(10);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown+100);
                 sleep(500);
@@ -203,7 +204,7 @@ TrajectorySequence goAlittleBack = drive.trajectorySequenceBuilder(backupLeft.en
                 Hardware.armMotor.setTargetPosition(DriveConstants.armDelAuto);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
-                sleep(500);
+                sleep(1000);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(700);
                 Hardware.armMotor.setTargetPosition(0);
@@ -216,14 +217,16 @@ TrajectorySequence goAlittleBack = drive.trajectorySequenceBuilder(backupLeft.en
 
             }
             else if(trajNumber == 2){
-                drive.followTrajectorySequence(deliverMiddle);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
+                sleep(10);
+                drive.followTrajectorySequence(deliverMiddle);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
                 sleep(10);
                 Hardware.armMotor.setPower(1);
                 Hardware.liftMotor.setPower(1);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown+100);
                 sleep(500);
-                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp-200);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp-100);
                 sleep(500);
                 drive.followTrajectorySequence(backupMiddle);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
@@ -233,7 +236,7 @@ TrajectorySequence goAlittleBack = drive.trajectorySequenceBuilder(backupLeft.en
                 Hardware.armMotor.setTargetPosition(DriveConstants.armDelAuto);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
-                sleep(500);
+                sleep(1000);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(700);
                 Hardware.armMotor.setTargetPosition(0);
@@ -245,16 +248,17 @@ TrajectorySequence goAlittleBack = drive.trajectorySequenceBuilder(backupLeft.en
 
             }
             else{
-                drive.followTrajectorySequence(deliverRight);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
+                sleep(10);
+                drive.followTrajectorySequence(deliverRight);
                 sleep(500);
                 Hardware.armMotor.setPower(1);
                 Hardware.liftMotor.setPower(1);
-                Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
-                sleep(10);
+                Hardware.dropServo.setPosition(DriveConstants.dropServoOpen);
+                sleep(50);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown+100);
                 sleep(500);
-                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp-200);
+                Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp-100);
                 sleep(500);
                 Hardware.dropServo.setPosition(DriveConstants.dropServoClose);
                 drive.followTrajectorySequence(backupRight);
@@ -264,7 +268,7 @@ TrajectorySequence goAlittleBack = drive.trajectorySequenceBuilder(backupLeft.en
                 Hardware.armMotor.setTargetPosition(DriveConstants.armDelAuto);
                 Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                 Hardware.flipServo.setPosition(DriveConstants.flipServoDeliver);
-                sleep(500);
+                sleep(1000);
                 Hardware.grabServo.setPosition(DriveConstants.grabServoOpen);
                 sleep(500);
                 Hardware.armMotor.setTargetPosition(0);
