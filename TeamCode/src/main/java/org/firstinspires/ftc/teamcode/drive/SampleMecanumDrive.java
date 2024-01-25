@@ -153,6 +153,7 @@ public class SampleMecanumDrive extends MecanumDrive {
         // for instance, setLocalizer(new ThreeTrackingWheelLocalizer(...));
         // SAV: setLocalizer disabled for now.
         //setLocalizer(new StandardTrackingWheelLocalizer(hardwareMap));
+       // setLocalizer(new StandardTrackingWheelLocalizer(hardwareMap));
 
         trajectorySequenceRunner = new TrajectorySequenceRunner(follower, HEADING_PID);
     }

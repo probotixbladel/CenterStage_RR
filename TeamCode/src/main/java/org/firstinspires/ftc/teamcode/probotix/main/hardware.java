@@ -11,6 +11,7 @@ import org.firstinspires.ftc.teamcode.util.Encoder;
 public class hardware {
         public DcMotorEx wheelLeftFront, wheelRightFront, wheelLeftRear, wheelRightRear, liftMotor, armMotor;
         public Servo grabServo, dropServo, flipServo;
+        public Encoder leftEncoder,rightEncoder,frontEncoder;
 
 
         private HardwareMap hardwareMap;
@@ -146,6 +147,8 @@ public class hardware {
         public Servo getDropServo(){return dropServo;}
 
         public Servo getFlipServo(){return flipServo;}
+
+
 
 
 
