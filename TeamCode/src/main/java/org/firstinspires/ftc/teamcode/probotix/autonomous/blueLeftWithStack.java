@@ -91,39 +91,42 @@ public class blueLeftWithStack extends LinearOpMode {
         //******************************** LEFT ******************************//
 
         TrajectorySequence deliverleft = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-30, -13))
+                .lineToConstantHeading(new Vector2d(-30, -11))
                 .build();
 
         TrajectorySequence backupLeft = drive.trajectorySequenceBuilder(deliverleft.end())
-                .lineToConstantHeading(new Vector2d(-20, -13))
+                .lineToConstantHeading(new Vector2d(-15, -11))
                 .build();
 
         TrajectorySequence deliverBackdropLeft = drive.trajectorySequenceBuilder(backupLeft.end())
-                .lineToLinearHeading(new Pose2d(-23, -41, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-18, -40, Math.toRadians(90)))
                 .build();
 
         TrajectorySequence moveCenterLeft = drive.trajectorySequenceBuilder(deliverBackdropLeft.end())
-                .lineToLinearHeading(new Pose2d(-54.5,-41, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-49,-38, Math.toRadians(91)))
                 .build();
         TrajectorySequence driveToStackLeft = drive.trajectorySequenceBuilder(moveCenterLeft.end())
-                .lineToLinearHeading(new Pose2d(-55.5,57,Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-49,55,Math.toRadians(91)))
                 .build();
 
+
+
+
         TrajectorySequence slowlyLeft = drive.trajectorySequenceBuilder(driveToStackLeft.end())
-                .lineToLinearHeading(new Pose2d(-55.5,65,Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-49,65,Math.toRadians(90)))
                 .build();
 
         TrajectorySequence slowlyBackLeft = drive.trajectorySequenceBuilder(slowlyLeft.end())
-                .lineToLinearHeading(new Pose2d(-55.5,50,Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-49,50,Math.toRadians(90)))
                 .build();
         TrajectorySequence goBackToBackboardLeft = drive.trajectorySequenceBuilder(slowlyBackLeft.end())
-                .lineToLinearHeading(new Pose2d(-54.5,-30,Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-49,-30,Math.toRadians(90)))
                 .build();
         TrajectorySequence deliverStackLeft = drive.trajectorySequenceBuilder(goBackToBackboardLeft.end())
-                .lineToLinearHeading(new Pose2d(-34,-43,Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-33,-40,Math.toRadians(90)))
                 .build();
         TrajectorySequence parkLeft = drive.trajectorySequenceBuilder(deliverStackLeft.end())
-                .lineToConstantHeading(new Vector2d(-38, -37))
+                .lineToConstantHeading(new Vector2d(-38, -45))
                 .build();
 
         //******************************** LEFT ******************************//
@@ -146,7 +149,7 @@ public class blueLeftWithStack extends LinearOpMode {
                 .lineToLinearHeading(new Pose2d(-53.5,-41, Math.toRadians(90)))
                 .build();
         TrajectorySequence driveToStackMiddle = drive.trajectorySequenceBuilder(moveCenterMiddle.end())
-                .lineToLinearHeading(new Pose2d(-55,57,Math.toRadians(90)))
+                .splineToLinearHeading(new Pose2d(-55,57),Math.toRadians(90))
                 .build();
 
         TrajectorySequence slowlyMiddle = drive.trajectorySequenceBuilder(driveToStackMiddle.end())
@@ -215,6 +218,7 @@ public class blueLeftWithStack extends LinearOpMode {
         webcam.stopStreaming();
         if (!isStopRequested()) {
         if(trajNumber == 1){
+
             Hardware.armMotor.setPower(1);
             Hardware.liftMotor.setPower(1);
             Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
@@ -272,6 +276,7 @@ public class blueLeftWithStack extends LinearOpMode {
 
         }
         else if(trajNumber == 2){
+
             Hardware.armMotor.setPower(1);
             Hardware.liftMotor.setPower(1);
             Hardware.grabServo.setPosition(DriveConstants.grabServoClose);
@@ -331,6 +336,7 @@ public class blueLeftWithStack extends LinearOpMode {
 
         }
         else{
+
             Hardware.armMotor.setPower(1);
             Hardware.liftMotor.setPower(1);
             Hardware.grabServo.setPosition(DriveConstants.grabServoClose);

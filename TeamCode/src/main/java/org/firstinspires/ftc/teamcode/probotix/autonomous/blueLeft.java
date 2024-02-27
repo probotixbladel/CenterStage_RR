@@ -94,7 +94,7 @@ public class blueLeft extends LinearOpMode {
         //******************************** LEFT ******************************//
 
         TrajectorySequence deliverleft = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-30, -13))
+                .lineToConstantHeading(new Vector2d(-30, -11))
                 .build();
 
         TrajectorySequence backupLeft = drive.trajectorySequenceBuilder(deliverleft.end())
@@ -102,7 +102,7 @@ public class blueLeft extends LinearOpMode {
                 .build();
 
         TrajectorySequence deliverBackdropLeft = drive.trajectorySequenceBuilder(backupLeft.end())
-                .lineToLinearHeading(new Pose2d(-22, -41, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-18, -41, Math.toRadians(90)))
                 .build();
 
         TrajectorySequence parkLeft = drive.trajectorySequenceBuilder(deliverBackdropLeft.end())
@@ -122,12 +122,12 @@ public class blueLeft extends LinearOpMode {
                 .build();
 
         TrajectorySequence deliverBackdropMiddle = drive.trajectorySequenceBuilder(backupMiddle.end())
-                .lineToLinearHeading(new Pose2d(-28,-40,Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-23,-40,Math.toRadians(90)))
                 .build();
 
 
         TrajectorySequence parkMiddle = drive.trajectorySequenceBuilder(deliverBackdropMiddle.end())
-                .lineToConstantHeading(new Vector2d(-50, -37))
+                .lineToConstantHeading(new Vector2d(-46, -37))
                 .build();
 
         //******************************** MIDDLE ****************************//
@@ -143,7 +143,7 @@ public class blueLeft extends LinearOpMode {
                 .build();
 
         TrajectorySequence deliverBackdropRight = drive.trajectorySequenceBuilder(backupRight.end())
-                .lineToLinearHeading(new Pose2d(-33, -40, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-32, -40, Math.toRadians(90)))
                 .build();
 
         TrajectorySequence parkRight = drive.trajectorySequenceBuilder(deliverBackdropRight.end())

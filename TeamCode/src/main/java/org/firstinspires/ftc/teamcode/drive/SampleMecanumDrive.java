@@ -57,10 +57,11 @@ import java.util.List;
  */
 @Config
 public class SampleMecanumDrive extends MecanumDrive {
-    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(5, 0, 0);
-    public static PIDCoefficients HEADING_PID = new PIDCoefficients(6, 0, 0);
+    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(5, 0, 0);//10
+    public static PIDCoefficients HEADING_PID = new PIDCoefficients(7, 0, 0);//7
 
-    public static double LATERAL_MULTIPLIER = 0.9723521926; //nieuw 0.964556962
+    public static double LATERAL_MULTIPLIER = 1; //miss 0.75
+
 
     public static double VX_WEIGHT = 1;
     public static double VY_WEIGHT = 1;
@@ -93,7 +94,7 @@ public class SampleMecanumDrive extends MecanumDrive {
             module.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
         }
 
-      /*  // TODO: adjust the names of the following hardware devices to match your configuration
+       /* TODO: adjust the names of the following hardware devices to match your configuration
         imu = hardwareMap.get(BNO055IMU.class, "imu");
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;

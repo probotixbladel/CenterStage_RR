@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.probotix.autonomous;
 
-import com.acmerobotics.roadrunner.drive.Drive;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -13,7 +11,6 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.probotix.main.bluePropPipeline;
 import org.firstinspires.ftc.teamcode.probotix.main.hardware;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
-import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceRunner;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -94,11 +91,10 @@ public class blueLeftSpline extends LinearOpMode {
         //******************************** LEFT ******************************//
 
         TrajectorySequence deliverleft = drive.trajectorySequenceBuilder(startPose)
-                .splineToLinearHeading(new Pose2d(-20,20,Math.toRadians(0))
-                        .build();
-
+                .splineToLinearHeading(new Pose2d(-30,-11), Math.toRadians(0))
+                .build();
         TrajectorySequence backupLeft = drive.trajectorySequenceBuilder(deliverleft.end())
-                .lineToConstantHeading(new Vector2d(-20, -13))
+                .splineToConstantHeading(new Vector2d(-20, -13), Math.toRadians(0))
                 .build();
 
         TrajectorySequence deliverBackdropLeft = drive.trajectorySequenceBuilder(backupLeft.end())
@@ -106,7 +102,7 @@ public class blueLeftSpline extends LinearOpMode {
                 .build();
 
         TrajectorySequence parkLeft = drive.trajectorySequenceBuilder(deliverBackdropLeft.end())
-                .lineToConstantHeading(new Vector2d(-5, -37))
+                .splineToConstantHeading(new Vector2d(-5, -37), Math.toRadians(0))
                 .build();
 
         //******************************** LEFT ******************************//
@@ -114,20 +110,20 @@ public class blueLeftSpline extends LinearOpMode {
         //******************************** MIDDLE ****************************//
 
         TrajectorySequence deliverMiddle = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-31, 0))
+                .splineToConstantHeading(new Vector2d(-31, 0), Math.toRadians(0))
                 .build();
 
         TrajectorySequence backupMiddle = drive.trajectorySequenceBuilder(deliverMiddle.end())
-                .lineToConstantHeading(new Vector2d(-26,0))
+                .splineToConstantHeading(new Vector2d(-26,0), Math.toRadians(0))
                 .build();
 
         TrajectorySequence deliverBackdropMiddle = drive.trajectorySequenceBuilder(backupMiddle.end())
-                .lineToLinearHeading(new Pose2d(-28,-40,Math.toRadians(90)))
+                .splineToLinearHeading(new Pose2d(-28,-40),Math.toRadians(90))
                 .build();
 
 
         TrajectorySequence parkMiddle = drive.trajectorySequenceBuilder(deliverBackdropMiddle.end())
-                .lineToConstantHeading(new Vector2d(-50, -37))
+                .splineToConstantHeading(new Vector2d(-50, -37), Math.toRadians(0))
                 .build();
 
         //******************************** MIDDLE ****************************//

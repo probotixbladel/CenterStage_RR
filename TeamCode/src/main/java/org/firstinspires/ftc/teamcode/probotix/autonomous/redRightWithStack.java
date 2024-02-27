@@ -91,37 +91,37 @@ public class redRightWithStack extends LinearOpMode {
         //******************************** RIGHT ******************************//
 
         TrajectorySequence deliverRight = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-30, 14))
+                .lineToConstantHeading(new Vector2d(-30, 12))
                 .build();
 
         TrajectorySequence backupRight = drive.trajectorySequenceBuilder(deliverRight.end())
-                .lineToConstantHeading(new Vector2d(-20, 14))
+                .lineToConstantHeading(new Vector2d(-20, 12))
                 .build();
 
         TrajectorySequence deliverBackdropRight = drive.trajectorySequenceBuilder(backupRight.end())
-                .lineToLinearHeading(new Pose2d(-24, 43, Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-22, 40, Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence moveCenterRight = drive.trajectorySequenceBuilder(deliverBackdropRight.end())
-                .lineToLinearHeading(new Pose2d(-54,43, Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-48,40, Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence driveToStackRight = drive.trajectorySequenceBuilder(moveCenterRight.end())
-                .lineToLinearHeading(new Pose2d(-54,-57,Math.toRadians(-90)))
+                .splineToLinearHeading(new Pose2d(-48,-57),Math.toRadians(0))
                 .build();
 
         TrajectorySequence slowlyRight = drive.trajectorySequenceBuilder(driveToStackRight.end())
-                .lineToLinearHeading(new Pose2d(-54.3,-64.5,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-48,-64.5,Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence slowlyBackRight = drive.trajectorySequenceBuilder(slowlyRight.end())
-                .lineToLinearHeading(new Pose2d(-54.3,-50,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-48,-50,Math.toRadians(-90)))
                 .build();
         TrajectorySequence goBackToBackboardRight = drive.trajectorySequenceBuilder(slowlyBackRight.end())
-                .lineToLinearHeading(new Pose2d(-54,30,Math.toRadians(-90)))
+                .splineToLinearHeading(new Pose2d(-48,30),Math.toRadians(-90))
                 .build();
         TrajectorySequence deliverStackRight = drive.trajectorySequenceBuilder(goBackToBackboardRight.end())
-                .lineToLinearHeading(new Pose2d(-32,43,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-32,40,Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence parkRight = drive.trajectorySequenceBuilder(deliverStackRight.end())
@@ -175,40 +175,40 @@ public class redRightWithStack extends LinearOpMode {
         //**************************** LEFT *************************************//
 
         TrajectorySequence deliverLeft = drive.trajectorySequenceBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(-28,0))
+                .lineToConstantHeading(new Vector2d(-26,0))
                 .build();
 
         TrajectorySequence backupLeft = drive.trajectorySequenceBuilder(deliverLeft.end())
-                .lineToLinearHeading(new Pose2d(-30,-6, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-27,-7, Math.toRadians(90)))
                 .build();
 
         TrajectorySequence deliverBackdropLeft = drive.trajectorySequenceBuilder(backupLeft.end())
-                .lineToLinearHeading(new Pose2d(-32, 40, Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-30, 40, Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence moveCenterLeft = drive.trajectorySequenceBuilder(deliverBackdropLeft.end())
-                .lineToLinearHeading(new Pose2d(-52.5,40, Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-48,40, Math.toRadians(-90)))
                 .build();
         TrajectorySequence driveToStackLeft = drive.trajectorySequenceBuilder(moveCenterLeft.end())
-                .lineToLinearHeading(new Pose2d(-52.5,-57,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-48,-57,Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence slowlyLeft = drive.trajectorySequenceBuilder(driveToStackLeft.end())
-                .lineToLinearHeading(new Pose2d(-52.5,-68,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-48,-63,Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence slowlyBackLeft = drive.trajectorySequenceBuilder(slowlyLeft.end())
-                .lineToLinearHeading(new Pose2d(-52.5,-50,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-48,-50,Math.toRadians(-90)))
                 .build();
         TrajectorySequence goBackToBackboardLeft = drive.trajectorySequenceBuilder(slowlyBackLeft.end())
-                .lineToLinearHeading(new Pose2d(-52.5,30,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-50,30,Math.toRadians(-90)))
                 .build();
         TrajectorySequence deliverStackLeft = drive.trajectorySequenceBuilder(goBackToBackboardLeft.end())
-                .lineToLinearHeading(new Pose2d(-25,40,Math.toRadians(-90)))
+                .lineToLinearHeading(new Pose2d(-30,40,Math.toRadians(-90)))
                 .build();
 
         TrajectorySequence parkLeft = drive.trajectorySequenceBuilder(deliverStackLeft.end())
-                .lineToConstantHeading(new Vector2d(-52, 37))
+                .lineToConstantHeading(new Vector2d(-47, 40))
                 .build();
 
         //**************************** LEFT *************************************//

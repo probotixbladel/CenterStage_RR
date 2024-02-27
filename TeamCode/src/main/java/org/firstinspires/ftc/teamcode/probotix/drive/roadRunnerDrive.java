@@ -144,9 +144,11 @@ public class  roadRunnerDrive extends LinearOpMode {
 
                     else if (gamepad2.y){
                         Hardware.armMotor.setTargetPosition(DriveConstants.armDeliver);
+                        Hardware.liftMotor.setTargetPosition(DriveConstants.liftUp);
                     }
                     else if(gamepad2.a){
                         Hardware.armMotor.setTargetPosition(DriveConstants.armPickUp);
+                        Hardware.liftMotor.setTargetPosition(DriveConstants.liftDown+80);
                     }
                     telemetry.addData("lift ticks:", Hardware.liftMotor.getCurrentPosition());
                     telemetry.addData("arm ticks:", Hardware.armMotor.getCurrentPosition());
